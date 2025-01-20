@@ -57,7 +57,7 @@ def LoginPage(request):
     return render(request, 'login.html',{"status": "error", "message": "Only POST requests are allowed."}, status=405)
      
 
-#    return render(request,'login.html')
+#    return render(request,'MONALI)
 
 def LogoutPage(request):
     logout(request)
