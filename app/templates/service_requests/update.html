@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Service Request</title>
+</head>
+<body>
+    <h1>Update Service Request</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+    <a href="{% url 'service_request_detail' request_obj.pk %}">Cancel</a>
+</body>
+</html>

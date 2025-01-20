@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Agency Dashboard</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'styles.css' %}"> {% endcomment %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            flex: 1;
+            text-align: center;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        form input, form textarea, form select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 5px 10px;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gas Agency Dashboard</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+            <li><a href="{% url 'help' %}">Help</a></li>
+            <li><a href="{% url 'track_my_account' %}">Track My Account</a></li>
+            {% comment %} <li><a href="/track_my_account">Track My Account</a></li> {% endcomment %}
+            <li><a href="{% url 'logout' %}" class="btn">Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Submit a Service Request</h2>
+        <form method="POST" action="{% url 'service_request_create' %}">
+            {% csrf_token %}
+            <label for="service_type">Service Type:</label>
+            <select id="service_type" name="service_type">
+                <option value="Gas">Gas leackage</option>
+                <option value="Gaspipeline">Gas pipiline leackage</option>
+                <option value="Cylinder">Cylinder nozzle break </option>
+                <option value="Billing">Billing issue</option>
+            </select>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            {% comment %} <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="Pending">Pending</option>
+                <option value="Resolved">Resolved</option>
+            </select> {% endcomment %}
+
+            {% comment %} <label for="resolved_at">Resolved At:</label>
+            <input type="datetime-local" id="resolved_at" name="resolved_at"> {% endcomment %}
+
+            <button type="submit">Submit Request</button>
+        </form>
+    </main>
+</body>
+</html>

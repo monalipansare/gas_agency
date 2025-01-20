@@ -1,0 +1,56 @@
+<!-- templates/my_account.html -->
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>My Account</h1>
+    </header>
+    <main>
+        <h2>Welcome, {{ request.user.username }}</h2>
+        <p><strong>Email:</strong> {{ request.user.email }}</p>
+        <p><strong>Profile Photo:</strong></p>
+        {% if profile.profile_photo %}
+            <img src="{{ profile.profile_photo.url }}" alt="Profile Photo" width="150">
+        {% else %}
+            <p>No profile photo uploaded.</p>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update Profile</button>
+
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="Pending">Pending</option>
+                <option value="Resolved">Resolved</option>
+            </select> {% endcomment %}
+
+            {% comment %} <label for="resolved_at">Resolved At:</label>
+            <input type="datetime-local" id="resolved_at" name="resolved_at">
+        </form>
+        
+        <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+    </main>
+</body> {% endcomment %}
+{% comment %} </html> {% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>My Account</h1>
+    </header>
+</body>
+    </html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #8e44ad, #3498db);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        /* Login Form Container */
+        .login-container {
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Form Header */
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #8e44ad;
+        }
+
+        /* Input Fields */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #8e44ad;
+            box-shadow: 0 0 5px rgba(142, 68, 173, 0.5);
+        }
+
+        /* Buttons */
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: #8e44ad;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-button:hover {
+            background: #732d91;
+        }
+
+        /* Create Account Redirect */
+        .signup-redirect {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .signup-redirect a {
+            color: #8e44ad;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup-redirect a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <!-- Login Form -->
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <!-- Login Button -->
+            <button type="submit" class="login-button">Login</button>
+        </form>
+
+        <!-- Signup Redirect -->
+        <div class="signup-redirect">
+            <p>Don't have an account? <a href="{% url 'signup' %}">Create an Account</a></p>
+        </div>
+    </div>
+</body>
+</html>

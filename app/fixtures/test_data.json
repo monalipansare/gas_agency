@@ -1,0 +1,22 @@
+[
+    {
+        "model": "app.servicerequest",
+        "pk": 1,
+        "fields": {
+            "service_type": "gas_leakage",
+            "description": "Gas leakage in the living room",
+            "status": "Pending",
+            "resolved_at": null
+        }
+    },
+    {
+        "model": "app.servicerequest",
+        "pk": 2,
+        "fields": {
+            "service_type": "billing_issue",
+            "description": "Incorrect bill for the month of December",
+            "status": "Resolved",
+            "resolved_at": "2025-01-12T10:30:00Z"
+        }
+    }
+]

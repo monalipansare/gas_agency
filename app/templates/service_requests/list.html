@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Service Requests</title>
+</head>
+<body>
+    <h1>Service Requests</h1>
+    <a href="{% url 'service_request_create' %}">Create New Request</a>
+    <ul>
+        {% for request in requests %}
+            <li>
+                <a href="{% url 'service_request_detail' request.pk %}">{{ request.name }}</a> - {{ request.status }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

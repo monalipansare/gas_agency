@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ request_obj.name }}</title>
+</head>
+<body>
+    <h1>{{ request_obj.name }}</h1>
+    <p>Status: {{ request_obj.status }}</p>
+    <p>Resolved At: {{ request_obj.resolved_at|default:"Not resolved yet" }}</p>
+    <p>Description: {{ request_obj.description }}</p>
+    {% if request_obj.attachment %}
+        <p>Attachment: <a href="{{ request_obj.attachment.url }}">Download</a></p>
+    {% endif %}
+    <a href="{% url 'service_request_update' request_obj.pk %}">Edit</a>
+    <a href="{% url 'service_request_list' %}">Back to List</a>
+</body>
+</html>
